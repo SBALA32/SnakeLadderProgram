@@ -43,6 +43,10 @@ namespace Snake_And_Ladder
             //Initialising
             int currentPosition = 0;
             Console.WriteLine("Starting position = "+ currentPosition);
+	    int numberOnDie = rollTheDie();
+            Console.WriteLine("Number on Die rolled = " + numberOnDie);
+            //checking for an option out of three
+            Console.WriteLine("New position = " + newPosition(numberOnDie));
         }
     }
 }
