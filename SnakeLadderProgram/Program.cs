@@ -38,28 +38,25 @@ namespace SnakeAndLadderSimulator
         {
             //Welcome msg
             Console.WriteLine("Welcome to the Snake and Ladder Problem!");
-            //Initialising
-            int currentPosition = 0;
-            Console.WriteLine("Starting position = "+ currentPosition);
-	    int numberOnDie = rollTheDie();
-            Console.WriteLine("Number on Die rolled = " + numberOnDie);
-            //checking for an option out of three
-            Console.WriteLine("New position = " + newPosition(numberOnDie));
             int currentPosition = 0, nextPosition;
             int count = 0;
-            while (currentPosition < StartPosition)
+            while (currentPosition < WinPosition)
             {
                 int numberOnDie = rollTheDie();
                 count++;
                 int toAdd = newPosition(numberOnDie);
-                nextPosition = currentPosition + toAdd;
+                //checking if next position will exceed 100
+                if (currentPosition + toAdd > WinPosition)
+                    nextPosition = currentPosition;
+                else
+                    nextPosition = currentPosition + toAdd;
                 //checking if player has moved below position 0
                 if (nextPosition < 0)
                     currentPosition = 0;
                 else
                     currentPosition = nextPosition;
             }
-            Console.WriteLine("Number on Die rolled = " + count);
+            Console.WriteLine("Number Of Total Die Rolls = " + count);
             Console.WriteLine("Final Position of Player = " + currentPosition);
         }
     }
